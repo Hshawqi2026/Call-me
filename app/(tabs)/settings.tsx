@@ -11,7 +11,7 @@ const SETTINGS_KEY = "@sawt/settings/v1";
 
 export default function SettingsScreen() {
   const insets = useSafeAreaInsets();
-  const { recordings, clearAll } = useRecordings();
+  const { recordings, clearAll, storageDirectory, storageReady } = useRecordings();
   const [notifyAfterRecording, setNotifyAfterRecording] = useState(true);
   const [biometricLock, setBiometricLock] = useState(false);
 
@@ -82,7 +82,19 @@ export default function SettingsScreen() {
             }
           />
           <Divider />
-          <SettingRow icon="folder-special" title="موقع التخزين" description="مساحة التطبيق الداخلية" right={<Text style={styles.valueText}>محلي</Text>} />
+          <SettingRow
+            icon="folder-special"
+            title="مجلد التسجيلات"
+            description={storageReady ? `مساحة التطبيق الداخلية · ${storageDirectory}` : "جارٍ تجهيز مساحة التخزين الداخلية"}
+            right={<Text style={styles.valueText}>{storageReady ? "جاهز" : "..."}</Text>}
+          />
+          <Divider />
+          <SettingRow
+            icon="phone-disabled"
+            title="التسجيل التلقائي للمكالمات"
+            description="يتطلب دعم النظام أو تطبيق الاتصال الافتراضي؛ تسجيل الميكروفون العادي متاح من الرئيسية"
+            right={<Text style={styles.warningText}>مقيّد</Text>}
+          />
         </View>
 
         <SectionTitle label="إدارة البيانات" />
@@ -145,6 +157,7 @@ const styles = StyleSheet.create({
   dangerTitle: { color: "#F27A7A", fontSize: 13, fontWeight: "700", textAlign: "right" },
   rowDescription: { color: "#7F8EA6", fontSize: 10, lineHeight: 16, textAlign: "right" },
   valueText: { color: "#C9F08C", fontSize: 12, fontWeight: "700" },
+  warningText: { color: "#F8C66D", fontSize: 11, fontWeight: "700" },
   divider: { backgroundColor: "#202E47", height: 1, marginLeft: 46 },
   dangerRow: { alignItems: "center", flexDirection: "row", gap: 11, minHeight: 72 },
   footer: { alignItems: "center", gap: 7, paddingTop: 12 },
