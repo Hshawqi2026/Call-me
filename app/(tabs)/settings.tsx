@@ -85,7 +85,7 @@ export default function SettingsScreen() {
           <SettingRow
             icon="folder-special"
             title="مجلد التسجيلات"
-            description={storageReady ? `مساحة التطبيق الداخلية · ${storageDirectory}` : "جارٍ تجهيز مساحة التخزين الداخلية"}
+            description={storageReady ? `مجلد عام يمكن الوصول إليه · ${storageDirectory}` : "سيُطلب اختيار مجلد Downloads عند بدء أول تسجيل"}
             right={<Text style={styles.valueText}>{storageReady ? "جاهز" : "..."}</Text>}
           />
           <Divider />
