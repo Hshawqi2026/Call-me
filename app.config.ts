@@ -30,8 +30,7 @@ const env = {
   // App branding - update these values directly (do not use env vars)
   appName: "صوت | مسجل المكالمات",
   appSlug: "sawt-call-recorder",
-  // S3 URL of the app logo - set this to the URL returned by generate_image when creating custom logo
-  // Leave empty to use the default icon from assets/images/icon.png
+  // Local app branding assets are kept in the repository for reproducible Android builds.
   logoUrl: "",
   scheme: schemeFromBundleId,
   iosBundleId: bundleId,
@@ -43,7 +42,7 @@ const config: ExpoConfig = {
   slug: env.appSlug,
   version: "1.0.0",
   orientation: "portrait",
-  icon: "./assets/images/icon.png",
+  icon: "./assets/images/icon-new.png",
   scheme: env.scheme,
   userInterfaceStyle: "automatic",
   newArchEnabled: true,
@@ -56,10 +55,9 @@ const config: ExpoConfig = {
   },
   android: {
     adaptiveIcon: {
-      backgroundColor: "#E6F4FE",
-      foregroundImage: "./assets/images/android-icon-foreground.png",
-      backgroundImage: "./assets/images/android-icon-background.png",
-      monochromeImage: "./assets/images/android-icon-monochrome.png",
+      backgroundColor: "#0B1324",
+      foregroundImage: "./assets/images/icon-new.png",
+      monochromeImage: "./assets/images/icon-new.png",
     },
     edgeToEdgeEnabled: true,
     predictiveBackGestureEnabled: false,

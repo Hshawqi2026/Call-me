@@ -41,6 +41,11 @@ app-example
 # generated native folders
 /ios
 /android
+android/.gradle/
+android/build/
+android/app/build/
+android/app/.cxx/
+android/app/debug.keystore
 
 # IDE
 .vscode/
